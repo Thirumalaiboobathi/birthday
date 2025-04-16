@@ -9,7 +9,7 @@ const Navbar = ({ isDrawerOpen, setIsDrawerOpen }) => {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light bg-white shadow-sm"
-      style={{ zIndex: 1200, position: 'fixed', width: '60%' }}
+      style={{ zIndex: 1200, position: 'fixed', width: '100%', height: '80px',top:0 ,left:0 }}
     >
       <button className="btn" onClick={toggleDrawer} style={{ fontSize: '1.5rem' }}>
         &#9776;
@@ -39,8 +39,8 @@ export const CustomDrawer = ({ isDrawerOpen }) => {
         width: drawerWidth,
         backgroundColor: 'black',
         color: 'white',
-        position: 'absolute',
-        top: 114, // height of navbar
+        position: 'fixed',
+        top: 79, // height of navbar
         bottom: 0,
         left: 0,
         zIndex: 1100,
