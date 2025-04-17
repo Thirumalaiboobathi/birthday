@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar, { CustomDrawer } from './common/navbar';
+import Navbar, { CustomDrawer } from '../component/common/navbar';
 import {
   Box,
   Typography,

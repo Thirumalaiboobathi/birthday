@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import Navbar, { CustomDrawer } from './common/navbar';
+import Navbar, { CustomDrawer } from '../component/common/navbar';
 import {
   Box, Typography, Table, TableBody, TableCell, TableContainer,
   TableHead, TableRow, Paper, Button, Select, MenuItem, FormControl,
   InputLabel, TablePagination
 } from '@mui/material';
+import axios from 'axios';
 
 const data = [
   {
@@ -46,6 +47,21 @@ export default function AdvertisementDashboard() {
   const handleChangeRowsPerPage = (e) => {
     setRowsPerPage(parseInt(e.target.value, 10));
     setPage(0);
+  };
+
+  const handleVerifyUser = async (mobilenumber) => {
+    try {
+      const payload = {
+        mobilenumber: "9361004066",
+        type: "supplier",
+      };
+  
+      const response = await axios.post('https://mikenko.in/registration/verifyuser', payload);
+      console.log("User verified:", response.data);
+      // You can also show a dialog, navigate, or set state based on response
+    } catch (error) {
+      console.error("Verification failed:", error);
+    }
   };
 
   return (
@@ -104,8 +120,14 @@ export default function AdvertisementDashboard() {
                     <TableCell>{row.openingDate}</TableCell>
                     <TableCell>{row.closingDate}</TableCell>
                     <TableCell>
-                      <Button variant="outlined" size="small">View Details</Button>
-                    </TableCell>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={() => handleVerifyUser(row.mobilenumber)}
+          >
+            View Details
+          </Button>
+        </TableCell>
                   </TableRow>
                 ))}
                 {filteredData.length === 0 && (
